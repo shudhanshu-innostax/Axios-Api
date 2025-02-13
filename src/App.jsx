@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react"
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addData } from "./slices/apislice";
+import Product from "./components/Product";
+import './App.css'
 
 const App = () => {
   const dispatch = useDispatch();
@@ -22,11 +23,12 @@ const App = () => {
 
   return (
     <div>
-      {
-        data.map((item, id) => (
-          <h1 key={id}>{item.title}</h1>
-        ))
-      }
+      <h1 className="text-center font-bold text-5xl heading">Product Page</h1>
+      <div className="flex flex-wrap gap-20 justify-center products">
+        {
+          data.map((item, id) => (<Product item={item} key={id} />))
+        }
+      </div>
     </div>
   )
 }
